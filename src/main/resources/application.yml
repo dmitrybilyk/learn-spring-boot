@@ -1,0 +1,9 @@
+some:
+  flows:
+    - email.to.push.com
+    - sms.to.push.com
+
+some-value: Dimon
+
+server:
+  port : 8081
