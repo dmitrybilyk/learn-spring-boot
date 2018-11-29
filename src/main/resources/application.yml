@@ -7,3 +7,13 @@ some-value: Dimon
 
 server:
   port : 8081
+
+datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost/survey_service
+  username: postgres
+  password: postgres
+jpa:
+  show-sql: true
+  hibernate:
+    ddl-auto: create-drop

@@ -1,13 +1,15 @@
 package cz.zoom.surveys.surveysexecution;
 
+import cz.zoom.surveys.surveysexecution.model.Survey;
+import cz.zoom.surveys.surveysexecution.repository.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +18,11 @@ import java.util.Map;
 
 @EnableConfigurationProperties
 @SpringBootApplication
+//		(scanBasePackages={
+//		"cz.zoom.surveys.surveysexecution.repository", "cz.zoom.surveys.surveysexecution.rest"})
 @ConfigurationProperties(value = "application.yml")
 @RestController
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SurveysExecutionApplication {
 
 
@@ -42,10 +47,14 @@ public class SurveysExecutionApplication {
 		System.out.println(configuration.getSomeValue());
 		System.out.println(configuration.getFlows());
 		RestTemplate restTemplate = new RestTemplate();
-		Conversation conversation = restTemplate.getForObject("http://localhost:8080/restClient/conversations/get",
-				Conversation.class);
-		System.out.println(conversation.getConversationId());
-
+//		Conversation conversation = restTemplate.getForObject("http://localhost:8080/restClient/conversations/get",
+//				Conversation.class);
+//		System.out.println(conversation.getConversationId());
+//		SurveyRepository surveyRepository = context.getBean(SurveyRepository.class);
+//		Survey survey = new Survey();
+//		survey.setName("survey 1");
+//		survey.setSurveyId("some id");
+//		surveyRepository.save(survey);
 	}
 
 }
