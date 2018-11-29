@@ -1,5 +1,6 @@
 package cz.zoom.surveys.surveysexecution.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,7 +12,9 @@ import javax.persistence.Table;
 @Table(name = "surveys")
 public class Survey {
     @Id
+    @Column
     private String surveyId;
+    @Column
     private String name;
 
     public String getSurveyId() {
@@ -28,5 +31,8 @@ public class Survey {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Survey() {
     }
 }

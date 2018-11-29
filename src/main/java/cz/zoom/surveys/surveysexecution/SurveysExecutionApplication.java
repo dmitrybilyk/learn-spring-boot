@@ -1,8 +1,6 @@
 package cz.zoom.surveys.surveysexecution;
 
 import cz.zoom.surveys.surveysexecution.model.Survey;
-import cz.zoom.surveys.surveysexecution.repository.SurveyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,11 +16,12 @@ import java.util.Map;
 
 @EnableConfigurationProperties
 @SpringBootApplication
-//		(scanBasePackages={
-//		"cz.zoom.surveys.surveysexecution.repository", "cz.zoom.surveys.surveysexecution.rest"})
+		(scanBasePackages={
+		"cz.zoom.surveys.surveysexecution.repository", "cz.zoom.surveys.surveysexecution.rest", "cz.zoom.surveys.surveysexecution"})
 @ConfigurationProperties(value = "application.yml")
 @RestController
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@EnableJpaRepositories("cz.zoom.surveys.surveysexecution.repository")
 public class SurveysExecutionApplication {
 
 
@@ -47,6 +46,11 @@ public class SurveysExecutionApplication {
 		System.out.println(configuration.getSomeValue());
 		System.out.println(configuration.getFlows());
 		RestTemplate restTemplate = new RestTemplate();
+//		SurveyRepository surveyRepository = context.getBean(SurveyRepository.class);
+		Survey s = new Survey();
+		s.setName("dfd");
+		s.setSurveyId("dffffff");
+//		surveyRepository.save(s);
 //		Conversation conversation = restTemplate.getForObject("http://localhost:8080/restClient/conversations/get",
 //				Conversation.class);
 //		System.out.println(conversation.getConversationId());

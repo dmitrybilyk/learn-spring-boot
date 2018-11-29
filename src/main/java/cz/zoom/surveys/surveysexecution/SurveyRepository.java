@@ -1,4 +1,4 @@
-package cz.zoom.surveys.surveysexecution.repository;
+package cz.zoom.surveys.surveysexecution;
 
 import cz.zoom.surveys.surveysexecution.model.Survey;
 import org.springframework.data.jpa.repository.JpaRepository;
